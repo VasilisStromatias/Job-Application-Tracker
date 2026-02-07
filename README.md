@@ -11,7 +11,10 @@ npm run dev
 
 Notes
 
-- UI library: Mantine
+-  MUI
 - Tailwind is configured in `tailwind.config.cjs` and imported in `src/index.css`
+- Typescript
+- Toastify
+- Axios
 
 Next steps: open http://localhost:3000 after `npm run dev`.
