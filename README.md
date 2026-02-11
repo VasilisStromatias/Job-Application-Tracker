@@ -11,10 +11,11 @@ npm run dev
 
 Notes
 
--  MUI
+- MUI ( UI Library )
 - Tailwind is configured in `tailwind.config.cjs` and imported in `src/index.css`
 - Typescript
-- Toastify
-- Axios
+- Toastify ( Notifications )
+- Axios ( For fetching )
+- Zustand ( State management )
 
 Next steps: open http://localhost:3000 after `npm run dev`.
