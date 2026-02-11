@@ -1,5 +1,10 @@
-import { Button } from "@mui/material";
 import { useHomeStore } from "./store";
+
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import Grid from "@mui/material/Grid";
+import SideBar from "./components/SideBar";
+import MainContent from "./components/MainContent";
 
 const App = () => {
 
@@ -9,9 +14,16 @@ const App = () => {
 
   return(
     <>
-      <h1>Count: {count}</h1>
-      <Button variant="contained" onClick={increment}>+</Button>
-      <Button variant="contained" onClick={decrement}>-</Button>
+        <Box sx={{ flexGrow: 1 }}>
+          <Grid container>
+            <Grid sx={{minHeight: '1080px'}} item xs={2} className="sidebar shadow-xl">
+              <SideBar />
+            </Grid>
+            <Grid sx={{minHeight: '1080px'}} item xs={10}>
+              <MainContent />
+            </Grid>
+          </Grid>
+        </Box>
     </>
   )
 }
