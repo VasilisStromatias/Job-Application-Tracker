@@ -1,7 +1,11 @@
 import { Box, Container } from '@mui/material'
 import { DataGrid, GridColDef } from '@mui/x-data-grid'
+import { useJobApplicationsStore } from '../store'
 
-const columns: GridColDef<(typeof rows)[number]>[] = [
+
+function JobsList() {
+
+  const columns: GridColDef<(typeof rows)[number]>[] = [
   { field: 'id', headerName: 'ID', width: 90 },
   {
     field: 'jobTitle',
@@ -21,21 +25,32 @@ const columns: GridColDef<(typeof rows)[number]>[] = [
     width: 110,
     editable: true,
   },
-];
+  {
+  field: 'dateSubmitted', 
+  headerName: 'Date Submitted', 
+  width: 160, 
+  } 
+]; 
 
-const rows = [
-  { id: 1, jobTitle: 'Software Engineer', company: 'Tech Corp', status: 'Applied' },
-];
+const jobsInfo = useJobApplicationsStore((state) => state.jobsInfo);
 
-function JobsList() {
+const rows = jobsInfo.map((job) => (
+  {
+    id: job.id, 
+    jobTitle: job.jobTitle, 
+    company: job.company, 
+    status: job.status, 
+    dateSubmitted: job.dateSubmitted 
+  }
+));
+
   return (
     <>
     <Container sx={{ mt: 4 }}>
         <Box sx={{ height: 400, width: '100%' }}>
             <DataGrid 
             rows={rows} 
-            columns={columns}
-            checkboxSelection 
+            columns={columns} 
             />
         </Box>
     </Container>

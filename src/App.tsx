@@ -1,16 +1,9 @@
-import { useHomeStore } from "./store";
-
 import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
 import Grid from "@mui/material/Grid";
 import SideBar from "./components/SideBar";
 import MainContent from "./components/MainContent";
 
 const App = () => {
-
-  const count = useHomeStore((state) => state.count);
-  const increment = useHomeStore((state) => state.increment);
-  const decrement = useHomeStore((state) => state.decrement);
 
   return(
     <>
