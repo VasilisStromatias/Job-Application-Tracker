@@ -26,7 +26,7 @@ function HeaderBar() {
                         Add New Job
                     </Button>
                     <Modal open={openModal} onClose={handleClose}>
-                        <AddNewJobModal />
+                        <AddNewJobModal onClose={handleClose} />
                     </Modal>
                 </Stack>
             </Container>

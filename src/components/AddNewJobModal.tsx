@@ -25,16 +25,15 @@ const inputStyle ={
 }
 
 
-function AddNewJobModal() {
+function AddNewJobModal({onClose}: {onClose: () => void}) {
 
     const { 
         register, 
         handleSubmit, 
         formState: { errors },
         reset
- } = useForm();
+    } = useForm();
 
- 
 const addJob = useJobApplicationsStore((state) => state.addJob);
 
 const onSubmit: SubmitHandler<any> = (data) => {
@@ -50,7 +49,8 @@ const onSubmit: SubmitHandler<any> = (data) => {
 
     addJob(newJob);
     reset();
-    
+    onClose();
+
 
 }
 
