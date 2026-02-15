@@ -1,4 +1,5 @@
 import  {create} from "zustand"
+import { persist, createJSONStorage } from "zustand/middleware"
 
 type Job = {
     jobTitle: string
@@ -14,17 +15,25 @@ type JobApplication = {
     deleteJob: (id: number) => void
 }
 
-export const useJobApplicationsStore = create<JobApplication>((set) => ({
-    jobsInfo: [],
-    addJob: (job: Job) => set((state) => ({
-        jobsInfo: [...state.jobsInfo, job]
-    })),
-    editJob: (id: number, updatedJob: Job) => set((state) => ({
-        jobsInfo: state.jobsInfo.map((job, index) => 
-            index + 1 === id ? updatedJob : job
-        )
-    })),
-    deleteJob: (id: number) => set((state) => ({
-        jobsInfo: state.jobsInfo.filter((job, index) => index + 1 !== id)
-    }))
-}));
+export const useJobApplicationsStore = create<JobApplication>()(
+    persist(
+        (set) => ({
+            jobsInfo: [],
+            addJob: (job: Job) => set((state) => ({
+                jobsInfo: [...state.jobsInfo, job]
+            })),
+            editJob: (id: number, updatedJob: Job) => set((state) => ({
+                jobsInfo: state.jobsInfo.map((job, index) => 
+                    index + 1 === id ? updatedJob : job
+                )
+            })),
+            deleteJob: (id: number) => set((state) => ({
+                jobsInfo: state.jobsInfo.filter((job, index) => index + 1 !== id)
+            }))
+        }),
+        {
+            name: 'job-applications-storage',
+            storage: createJSONStorage(() => localStorage),
+        }
+    )
+);
