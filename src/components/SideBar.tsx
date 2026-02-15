@@ -13,17 +13,17 @@ function SideBar() {
         <>
             <Container className='mt-4' disableGutters>
                 <div className="logo mx-4 mb-4">
-                    <Link className='block text-xl font-semibold bg-blue-300 text-center py-2 rounded' to="/">Job App Tracker</Link>
+                    <Link className='block text-md font-semibold bg-blue-300 text-center py-2 rounded' to="/">Job App Tracker</Link>
                 </div>
                 <nav>
                 <List>
                     <ListItem className='border-y-2  border-indigo-100' disablePadding>
                         <ListItemButton component={NavLink} to="/" end>
                             <ListItemIcon>
-                                <HomeIcon color="primary" fontSize='large' />
+                                <HomeIcon color="primary" fontSize='medium' />
                             </ListItemIcon>
                             <ListItemText primary="Dashboard" primaryTypographyProps={{
-                                fontSize : '18px',
+                                fontSize : '16px',
                                 fontWeight: '500'
                             }} />
                         </ListItemButton>
@@ -31,10 +31,10 @@ function SideBar() {
                     <ListItem className='border-b-2 border-indigo-100' disablePadding>
                         <ListItemButton component={NavLink} to="/jobs-list" end>
                             <ListItemIcon>
-                                <WorkIcon color="primary" fontSize='large' />
+                                <WorkIcon color="primary" fontSize='medium' />
                             </ListItemIcon>
                             <ListItemText primary="Jobs List" primaryTypographyProps={{
-                                fontSize : '18px',
+                                fontSize : '16px',
                                 fontWeight: '500'
                             }} />
                         </ListItemButton>
